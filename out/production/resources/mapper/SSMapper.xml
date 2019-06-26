@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wsy.db.pb.dao.SSMapper">
+
+    <resultMap id="ssResultMap" type="wsy.db.pb.domain.SS">
+        <result property="mySno" column="my_sno"></result>
+        <result property="friendSno" column="friend_sno"></result>
+    </resultMap>
+
+    <insert id="insert" parameterType="wsy.db.pb.domain.SS">
+        insert into ss(my_sno,friend_sno)
+        values (#{mySno},#{friendSno})
+    </insert>
+
+    <select id="list" resultMap="ssResultMap">
+        select *
+        from ss
+    </select>
+
+    <delete id="delete" parameterType="wsy.db.pb.domain.SS">
+        delete
+        from ss
+        where
+        my_sno = #{mySno}
+        and
+        friend_sno = #{friendSno}
+    </delete>
+
+</mapper>

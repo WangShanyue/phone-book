@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wsy.db.pb.dao.StudentMapper">
+
+    <resultMap id="studentResultMap" type="wsy.db.pb.domain.Student">
+        <id property="sno" column="sno"/>
+        <result property="sname" column="sname"></result>
+        <result property="sgender" column="sgender"></result>
+        <result property="stel" column="stel"></result>
+        <result property="semail" column="semail"></result>
+        <result property="saddress" column="saddress"></result>
+    </resultMap>
+
+    <select id="list" resultMap="studentResultMap">
+        select *
+        from student
+    </select>
+
+    <insert id="insert" parameterType="wsy.db.pb.domain.Student">
+        insert into student(sno,sname,sgender,stel,semail,saddress)
+        values (#{sno},#{sname},#{sgender},#{stel},#{semail},#{saddress})
+    </insert>
+
+    <select id="selectBySno" parameterType="string" resultType="wsy.db.pb.domain.Student" >
+        select *
+        from student
+        where sno = #{sno}
+    </select>
+
+</mapper>
