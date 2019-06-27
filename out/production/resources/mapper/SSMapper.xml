@@ -21,9 +21,13 @@
         delete
         from ss
         where
-        my_sno = #{mySno}
+        my_sno like #{mySno}
         and
-        friend_sno = #{friendSno}
+        friend_sno like  #{friendSno}
     </delete>
+
+    <select id="selectOne"  resultMap="ssResultMap">
+        select  * from ss where my_sno like #{mySno} and friend_sno like #{friendSno}
+    </select>
 
 </mapper>

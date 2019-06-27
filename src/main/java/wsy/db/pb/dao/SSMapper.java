@@ -1,8 +1,10 @@
 package wsy.db.pb.dao;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 import wsy.db.pb.domain.SS;
+import wsy.db.pb.domain.Student;
 
 import java.util.List;
 
@@ -16,8 +18,11 @@ public interface SSMapper {
 
     Integer insert(SS ss);
 
-    List<SS> list();
+    List<Student> list();
 
     Integer delete(SS ss);
+
+    SS selectOne(@Param("mySno") String mySno, @Param("friendSno") String friendSno);
+
 
 }

@@ -18,13 +18,43 @@
 
     <insert id="insert" parameterType="wsy.db.pb.domain.Student">
         insert into student(sno,sname,sgender,stel,semail,saddress)
-        values (#{sno},#{sname},#{sgender},#{stel},#{semail},#{saddress})
-    </insert>
+    values (#{sno},#{sname},#{sgender},#{stel},#{semail},#{saddress})
+</insert>
 
-    <select id="selectBySno" parameterType="string" resultType="wsy.db.pb.domain.Student" >
+    <select id="selectBySno"  resultType="wsy.db.pb.domain.Student" >
         select *
         from student
-        where sno = #{sno}
+        where sno like #{sno}
+    </select>
+    <select id="selectBySname" resultMap="studentResultMap" >
+        select *
+        from student
+        where sno  in  (select friend_sno from ss where my_sno=#{mySno}) and sname = #{sname}
+    </select>
+    <select id="selectByGender"  resultMap="studentResultMap" >
+        select *
+        from student
+        where sno  in  (select friend_sno from ss where my_sno=#{mySno}) and sgender = #{sgender}
+    </select>
+    <select id="selectByStel" resultMap="studentResultMap" >
+        select *
+        from student
+        where sno  in  (select friend_sno from ss where my_sno=#{mySno}) and stel = #{stel}
+    </select>
+    <select id="selectBySemail"  resultMap="studentResultMap" >
+        select *
+        from student
+        where sno  in  (select friend_sno from ss where my_sno=#{mySno}) and semail like #{semail}
+    </select>
+    <select id="selectBySaddress" resultMap="studentResultMap" >
+        select *
+        from student
+        where sno  in  (select friend_sno from ss where my_sno=#{mySno}) and saddress like  #{saddress}
     </select>
 
+    <select id="listCurFriends"  resultMap="studentResultMap">
+        select *
+        from student
+        where  sno in (select friend_sno from ss where my_sno=#{mySno})
+    </select>
 </mapper>

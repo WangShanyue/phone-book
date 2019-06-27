@@ -15,13 +15,13 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "sno='" + sno + '\'' +
-                ", sname='" + sname + '\'' +
-                ", sgender='" + sgender + '\'' +
-                ", stel='" + stel + '\'' +
-                ", semail='" + semail + '\'' +
-                ", saddress='" + saddress + '\'' +
+        return "{" +
+                "学号：'" + sno + '\'' +
+                ", 姓名：'" + sname + '\'' +
+                ", 性别： '" + sgender + '\'' +
+                ", 电话号码：'" + stel + '\'' +
+                ", email：'" + semail + '\'' +
+                ", 地址：'" + saddress + '\'' +
                 '}';
     }
 
